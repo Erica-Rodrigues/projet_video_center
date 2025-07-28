@@ -1,43 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Video index{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
-    <h1>Video index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>VideoLink</th>
-                <th>Description</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for video in videos %}
-            <tr>
-                <td>{{ video.id }}</td>
-                <td>{{ video.title }}</td>
-                <td>{{ video.videoLink }}</td>
-                <td>{{ video.description }}</td>
-                <td>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ video.updatedAt ? video.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_video_show', {'id': video.id}) }}">show</a>
-                    <a href="{{ path('app_video_edit', {'id': video.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+    <div class ="container">
+        <div class="row">
+            {% for video in videos %}
+                <div class="card ">
+                    <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
+                    <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
+                    <p>{{ video.description |u.truncate(25, '...',true) }}</p>
+                    <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+                </div>
+            {% else %}
+                <p> No videos found</p>
+            {% endfor %}
+        </div>
+    </div>
     <a href="{{ path('app_video_create') }}">Create new</a>
 {% endblock %}
