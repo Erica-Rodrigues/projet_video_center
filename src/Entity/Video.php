@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\VideoRepository;
+use App\Validator\InappropriateWords;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
 #[ORM\Table(name: "videos")]
@@ -16,12 +18,23 @@ class Video
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 3
+    )]
+    #[InappropriateWords()]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
+    #[Assert\NotBlank()]
     private ?string $videoLink = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 20
+    )]
+    #[InappropriateWords()]
     private ?string $description = null;
 
     #[ORM\Column]
