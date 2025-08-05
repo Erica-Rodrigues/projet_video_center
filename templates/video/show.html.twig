@@ -7,6 +7,7 @@
     <iframe width="640" height="480" src={{ video.videoLink }}></iframe>
     <p>{{ video.description }}</p>
     <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+    <p> {{ video.user.firstname }} {{ video.user.lastanme }}</p>
 
 
     <a href="{{ path('app_video_index') }}">back to list</a>

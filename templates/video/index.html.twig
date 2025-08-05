@@ -11,6 +11,7 @@
                     <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
                     <p>{{ video.description |u.truncate(25, '...',true) }}</p>
                     <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+                    <p> {{ video.user.firstname }} {{ video.user.lastanme }}</p>
                 </div>
             {% else %}
                 <p> No videos found</p>
