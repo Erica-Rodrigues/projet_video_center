@@ -38,6 +38,10 @@ class Video
     #[InappropriateWords()]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'videos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     use Timestampable;
 
     public function getId(): ?int
@@ -77,6 +81,18 @@ class Video
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
