@@ -18,6 +18,15 @@ final class VideoController extends AbstractController
     #[Route(path: '/',name: 'app_video_index', methods: ['GET'])]
     public function index(VideoRepository $videoRepository): Response
     {
+        if($this->getUser()){
+            /**
+             * @var User
+             */
+            $user = $this->getUser();
+            if(!$user->isVerified()){
+                $this->addFlash('info','Your email is not verified !');
+            }
+        }
         return $this->render('video/index.html.twig', [
             'videos' => $videoRepository->findAll(),
         ]);
@@ -26,12 +35,26 @@ final class VideoController extends AbstractController
     #[Route('/video/create', name: 'app_video_create', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if($this->getUser()){
+            /**
+             * @var User
+             */
+            $user = $this->getUser();
+            if(!$user->isVerified()){
+                $this->addFlash('error', 'Your must confirm your email to create a video !');
+                return $this->redirectToRoute('app_video_index');
+            }
+        }else {
+            $this->addFlash('error', 'You must login to create a video !');
+            return $this->redirectToRoute('app_login');
+        }
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $video->setCreatedAt(new DateTimeImmutable())
+            $video->setUser($this->getUser())
+                  ->setCreatedAt(new DateTimeImmutable())
                   ->setUpdatedAt(new DateTimeImmutable());
             $entityManager->persist($video);
             $entityManager->flush();
@@ -56,6 +79,22 @@ final class VideoController extends AbstractController
     #[Route('/video/{id}/edit', name: 'app_video_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Video $video, EntityManagerInterface $entityManager): Response
     {
+        if($this->getUser()){
+            /**
+             * @var User
+             */
+            $user = $this->getUser();
+            if(!$user->isVerified()){
+                $this->addFlash('error', 'You must confirm your email to edit a video !');
+                return $this->redirectToRoute('app_video_index');
+            }
+            if($user->getEmail() != $video->getUser()->getEmail()){
+                $this->addFlash('error', 'You must be ' . $video->getUser()->getEmail() . 'to edit this video !');
+            }
+        }else {
+            $this->addFlash('error', 'You must login to create a video !');
+            return $this->redirectToRoute('app_login');
+        }
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
 
@@ -75,6 +114,23 @@ final class VideoController extends AbstractController
     #[Route('/video/{id}/delete', name: 'app_video_delete', methods: ['POST'])]
     public function delete(Request $request, Video $video, EntityManagerInterface $entityManager): Response
     {
+        if($this->getUser()){
+            /**
+             * @var User
+             */
+            $user = $this->getUser();
+            if(!$user->isVerified()){
+                $this->addFlash('error', 'You must confirm your email to delete a video !');
+                return $this->redirectToRoute('app_video_index');
+            }
+            if($user->getEmail() != $video->getUser()->getEmail()){
+                $this->addFlash('error', 'You must be ' . $video->getUser()->getEmail() . 'to delete this video !');
+                return $this->redirectToRoute('app_video_index');
+            }
+        }else{
+            $this->addFlash('error', 'You must login to delete this video !');
+            return $this->redirectToRoute('app_login');
+        }
         if ($this->isCsrfTokenValid('delete'.$video->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($video);
             $entityManager->flush();

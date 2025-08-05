@@ -10,7 +10,7 @@
       {% if app.user %}
         <a class="nav-link " href={{ path('app_logout') }}>Logout</a>
       {% else %}
-        <a class="nav-link {{ app.current_route == 'app_register' ? 'active' : '' }}" href='#'>Register</a>
+        <a class="nav-link {{ app.current_route == 'app_register' ? 'active' : '' }}" href={{ path('app_register') }}>Register</a>
         <a class="nav-link ms-3 {{ app.current_route == 'app_login' ? 'active' : '' }}" href={{ path('app_login') }}>Login</a>
       {% endif %}
     </div>
