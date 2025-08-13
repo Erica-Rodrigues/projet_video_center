@@ -6,17 +6,29 @@
     <div class ="container">
         <div class="row">
             {% for video in videos %}
-                <div class="card ">
-                    <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
-                    <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
-                    <p>{{ video.description |u.truncate(25, '...',true) }}</p>
-                    <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
-                    <p> {{ video.user.firstname }} {{ video.user.lastanme }}</p>
-                </div>
+                {% if video.premiumVideo %}
+                    {% if app.user and app.user.isVerified %}
+                        <div class="card ">
+                            <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
+                            <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
+                            <p>{{ video.description |u.truncate(25, '...',true) }}</p>
+                            <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+                            <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="card ">
+                        <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
+                        <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
+                        <p>{{ video.description |u.truncate(25, '...',true) }}</p>
+                        <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+                        <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+                    </div>
+                {% endif %}
             {% else %}
                 <p> No videos found</p>
             {% endfor %}
         </div>
     </div>
-    <a href="{{ path('app_video_create') }}">Create new</a>
+    <a href={{ path('app_video_create') }}>Create new</a>
 {% endblock %}

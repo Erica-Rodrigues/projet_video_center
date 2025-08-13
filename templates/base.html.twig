@@ -15,7 +15,8 @@
     </head>
     <body>
         {{include('/layouts/partials/_nav.html.twig')}}
-        <div class="container my-4">
+        <div class="container my-4" style="padding-top: 5rem">
+            {{include('layouts/partials/_flash.html.twig')}}
             {% block body %}{% endblock %}
         </div>
     </body>

@@ -7,13 +7,13 @@
     <iframe width="640" height="480" src={{ video.videoLink }}></iframe>
     <p>{{ video.description }}</p>
     <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
-    <p> {{ video.user.firstname }} {{ video.user.lastanme }}</p>
+    <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
 
 
     <a href="{{ path('app_video_index') }}">back to list</a>
 
     {% if app.user and app.user.isVerified %}
-        {% app.user is same as video.user %}
+        {% if app.user is same as video.user %}
             <a href="{{ path('app_video_edit', {'id': video.id}) }}">edit</a>
 
             {{ include('video/_delete_form.html.twig') }}

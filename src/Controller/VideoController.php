@@ -48,7 +48,7 @@ final class VideoController extends AbstractController
             $this->addFlash('error', 'You must login to create a video !');
             return $this->redirectToRoute('app_login');
         }
-        $video = new Video();
+        $video = new Video;
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
 
