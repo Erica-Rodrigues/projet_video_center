@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Video;
+use App\Form\SearchType;
 use App\Form\VideoType;
+use App\Model\SearchData;
 use App\Repository\VideoRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,9 +40,28 @@ final class VideoController extends AbstractController
             9
         );
 
+        // pour la barre de recherche
+        $searchData = new SearchData();
+        $form = $this->createForm(SearchType::class, $searchData);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $searchData->page = $request->query->getInt('page', 1);
+            $videos = $videoRepository->findBySearch($searchData);
+            $videosTotal = sizeof($videos);
+
+            return $this->render('video/index.html.twig', [
+                'form' => $form->createView(),
+                'videos' => $videos,
+                'videosTotal' => $videosTotal,
+                'searchData' => $searchData
+            ]);
+        }
+
         return $this->render('video/index.html.twig', [
             'videos' => $videos,
-            'videosTotal' => $videosTotal,
+            'form' => $form->createView(),
+            'searchData' => $searchData
         ]);
     }
 

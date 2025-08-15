@@ -4,6 +4,15 @@
 
 {% block body %}
     <div class ="container">
+        {% if app.user %}
+            {% include "layouts/partials/_search_data.html.twig" with {
+                form: form
+            } only %}
+            {% if searchData.q %}
+                <p class="d-flex justify-content-center">{{ videosTotal }} vidéo(s) trouvé avec le terme {{ searchData.q }}</p>
+            {% endif %}
+        {% endif %}
+        <br>
         <div class="row">
             {% for video in videos %}
                 {% if video.premiumVideo %}
