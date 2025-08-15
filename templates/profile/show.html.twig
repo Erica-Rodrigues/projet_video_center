@@ -6,17 +6,30 @@
     <div class="row">
         <div class="col-md-6 mx-auto text-center">
             <h1>My Profile</h1>
-            <img style="max-width: 250px;" src={{vich_uploader_asset(app.user, 'imageFile')}}>
+            <img style="maw-width: 250px;" src={{vich_uploader_asset(app.user, 'imageFile')}}>
             <br>
             <p>{{ app.user.email }}</p>
             <h2>{{ app.user.firstname ~" "~ app.user.lastname}}</h2>
             <p>Created at {{ app.user.createdAt|date("d/m/Y") }}</p>
             <br>
             <p>
-                <a class="btn btn-primary btn-sm" href={{ path('app_profile_edit') }}>Edit Profile</a>
+                <a class="btn btn-primary btn-sm" href={{ path('app_profile_edit')}}>Edit Profile</a>
             </p>
         
         </div>
     
+    </div>
+    <div class="row">
+        {% for video in videos %}
+            <div class="card" style="width: 350px;">
+                <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
+                <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
+                <p>{{ video.description |u.truncate(25, '...',true) }}</p>
+                <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+                <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+            </div>
+        {% else %}
+            <p> No videos found</p>
+        {% endfor %}
     </div>
 {% endblock %}

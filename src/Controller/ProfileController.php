@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserFormType;
+use App\Repository\VideoRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,13 +15,16 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
-    public function show(TranslatorInterface $translator): Response
+    public function show(TranslatorInterface $translator, VideoRepository $videoRepository): Response
     {
         if(!$this->getUser()){
             $this->addFlash('error',$translator->trans("profileController.show.mustLogin"));
             return $this->redirectToRoute('app_login');
         }
-        return $this->render('profile/show.html.twig');
+        $videos = $videoRepository->findBy(['user' => $this->getUser()]);
+        return $this->render('profile/show.html.twig',[
+            'videos' => $videos
+        ]);
     }
 
     #[Route('/profile/edit', name: "app_profile_edit")]
