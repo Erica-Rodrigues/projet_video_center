@@ -8,7 +8,7 @@
             {% for video in videos %}
                 {% if video.premiumVideo %}
                     {% if app.user and app.user.isVerified %}
-                        <div class="card ">
+                        <div class="card" style="width: 350px;">
                             <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
                             <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
                             <p>{{ video.description |u.truncate(25, '...',true) }}</p>
@@ -17,7 +17,7 @@
                         </div>
                     {% endif %}
                 {% else %}
-                    <div class="card ">
+                    <div class="card" style="width: 350px;">
                         <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
                         <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
                         <p>{{ video.description |u.truncate(25, '...',true) }}</p>
@@ -28,6 +28,10 @@
             {% else %}
                 <p> No videos found</p>
             {% endfor %}
+        </div>
+        <br>
+        <div class="navigation d-flex justify-content-center mb-4" >
+            {{ knp_pagination_render(videos) }}
         </div>
     </div>
     <a href={{ path('app_video_create') }}>Create new</a>

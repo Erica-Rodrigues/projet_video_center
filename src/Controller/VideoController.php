@@ -7,6 +7,7 @@ use App\Form\VideoType;
 use App\Repository\VideoRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class VideoController extends AbstractController
 {
     #[Route(path: '/',name: 'app_video_index', methods: ['GET'])]
-    public function index(VideoRepository $videoRepository): Response
+    public function index(VideoRepository $videoRepository,PaginatorInterface $paginatorInterface, Request $request): Response
     {
         if($this->getUser()){
             /**
@@ -27,8 +28,19 @@ final class VideoController extends AbstractController
                 $this->addFlash('info','Your email is not verified !');
             }
         }
+
+        // pour la pagination
+        $data = $videoRepository->findAll();
+        $videosTotal = sizeof($data);
+        $videos = $paginatorInterface->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            9
+        );
+
         return $this->render('video/index.html.twig', [
-            'videos' => $videoRepository->findAll(),
+            'videos' => $videos,
+            'videosTotal' => $videosTotal,
         ]);
     }
 
