@@ -104,6 +104,20 @@ final class VideoController extends AbstractController
     #[Route('/video/{id}', name: 'app_video_show', methods: ['GET'])]
     public function show(Video $video): Response
     {
+        if($this->getUser()){
+            /**
+             * @var User
+             */
+            $user = $this->getUser();
+            if(!$user->isVerified() && $video->isPremiumVideo()){
+                $this->addFlash('error', 'Your must confirm your email to watch this video !');
+                return $this->redirectToRoute('app_video_index');
+            }
+        }else {
+            $this->addFlash('error', 'You must login to watch this video !');
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('video/show.html.twig', [
             'video' => $video,
         ]);
