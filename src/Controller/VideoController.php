@@ -113,7 +113,7 @@ final class VideoController extends AbstractController
                 $this->addFlash('error', 'Your must confirm your email to watch this video !');
                 return $this->redirectToRoute('app_video_index');
             }
-        }else {
+        }else if(!$this->getUser() && $video->isPremiumVideo()) {
             $this->addFlash('error', 'You must login to watch this video !');
             return $this->redirectToRoute('app_login');
         }
@@ -137,6 +137,7 @@ final class VideoController extends AbstractController
             }
             if($user->getEmail() != $video->getUser()->getEmail()){
                 $this->addFlash('error', 'You must be ' . $video->getUser()->getEmail() . 'to edit this video !');
+                return $this->redirectToRoute('app_video_index');
             }
         }else {
             $this->addFlash('error', 'You must login to create a video !');
@@ -158,7 +159,7 @@ final class VideoController extends AbstractController
         ]);
     }
 
-    #[Route('/video/{id}/delete', name: 'app_video_delete', methods: ['POST'])]
+    #[Route('/video/{id}/delete', name: 'app_video_delete')]
     public function delete(Request $request, Video $video, EntityManagerInterface $entityManager): Response
     {
         if($this->getUser()){

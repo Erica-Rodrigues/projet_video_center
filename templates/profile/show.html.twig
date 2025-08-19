@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-6 mx-auto text-center">
             <h1>My Profile</h1>
-            <img style="maw-width: 250px;" src={{vich_uploader_asset(app.user, 'imageFile')}}>
+            <img style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover;" src={{vich_uploader_asset(app.user, 'imageFile')}}>
             <br>
             <p>{{ app.user.email }}</p>
             <h2>{{ app.user.firstname ~" "~ app.user.lastname}}</h2>
