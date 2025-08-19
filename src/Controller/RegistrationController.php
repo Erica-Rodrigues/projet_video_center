@@ -28,7 +28,7 @@ class RegistrationController extends AbstractController
     {
         if($this->getUser()){
             $this->addFlash('error','Already Connected !');
-            return $this->redirectToRoute('app_account');
+            return $this->redirectToRoute('app_profile');
         }
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
