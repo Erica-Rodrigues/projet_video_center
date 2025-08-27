@@ -28,11 +28,16 @@ final class VideoController extends AbstractController
             $user = $this->getUser();
             if(!$user->isVerified()){
                 $this->addFlash('info','Your email is not verified !');
+                $data = $videoRepository->findBy(['premiumVideo'=> false]);
+            }else{
+                $data = $videoRepository->findAll();
             }
+        }else{
+            $data = $videoRepository->findBy(['premiumVideo'=> false]);  
         }
 
         // pour la pagination
-        $data = $videoRepository->findAll();
+
         $videosTotal = sizeof($data);
         $videos = $paginatorInterface->paginate(
             $data,
