@@ -5,10 +5,10 @@
 {% block body %}
     <div class = "row">
         <div class= "col-md-6 mx-auto mt-5">
-            <h1 align="center">Create a new Video</h1>          
+            <h1 align="center">{{'videoCreate.title'|trans}}</h1>          
             {{ include('video/_form.html.twig') }}
 
-            <a href="{{ path('app_video_index') }}">back to list</a>
+            <a href="{{ path('app_video_index') }}">{{'videoCreateBtn.backToList'|trans}}</a>
         </div>
     </div>
 {% endblock %}

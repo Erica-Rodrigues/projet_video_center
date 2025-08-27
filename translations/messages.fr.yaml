@@ -1,0 +1,73 @@
+vich_uploader.form_label.delete_confirm: 'Supprimer?'
+vich_uploader.link.download: Télécharger
+profileController.show.mustLogin: Veuillez vous connecter pour accéder à votre profil
+profileController.edit.mustLogin: Veuillez vous connecter pour éditer votre profil
+'Profile successfuly updated !': 'Profil mis à jour avec succès!'
+registerTemplate.title: S'enregistrer
+registerTemplate.button: S'enregistrer
+'Hi! Please confirm your email!': 'Veuillez confirmer votre email!'
+'Please confirm your email address by clicking the following link:': 'Veuillez confirmer votre adresse email en cliquant sur le lien suivant :'
+'This link will expire in': 'Ce lien expirera dans'
+Cheers!: Bien à vous !
+videoDelete.btn: Supprimer vidéo
+videoEdit.title: Editer vidéo
+videoEditBtn.backToList: Retour à la liste
+'video(s) found with the term': 'vidéo(s) trouvée(s) avec le terme'
+'No videos found': 'Aucune vidéo trouvée'
+videoIndex.btnCreate: Créer une vidéo
+formBtn.save: Enregister
+videoShowBtn.backToList: Retour à la liste
+videoShow.editBtn: Editer
+videoCreate.title: Créer une vidéo
+videoCreateBtn.backToList: Retour à la liste
+resetPasswordRequest.title: Demande de réinitialisation mot de passe
+"Enter your email address, and we will send you a\n                        link to reset your password.": "Introduisez votre adresse email et nous vous enverrons un\n                        lien pour réinitialiser votre mot de pass."
+resetPasswordRequest.btn: Envoyer
+"If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.\n        This link will expire in": "Si un compte correspondant à votre adresse email existe, alors un email contenant un lien pour réinitialiser votre mot de passe sera envoyé.\n        Ce lien expirera dans"
+"If you don't receive an email please check your spam folder or": "Si vous ne recever pas d'email, veuillez vérifier votre dossier spam ou "
+'try again': 'Essayer à nouveau'
+resetPassword.title: Réinitialiser mot de passe
+resetPassword.button: Réinitialiser
+Hi!: Bonjour!
+'To reset your password, please visit the following link': 'Pour réinitialiser votre mot de passe, veuillez appuyer sur le lien suivant'
+'You are logged in as': 'Vous êtes connecté en tant que '
+Logout: Déconnexion
+'Please sign in': 'Veuillez vous connecter'
+Password: Mot de passe
+'Forgot Password ?': 'Mot de passe oublié ?'
+'Sign in': 'Connectez-vous'
+'Not registered yet ?': 'Pas encore inscrit ?'
+'Create an account': 'Créer un compte'
+profileEdit.title: Editer Profil
+profileEdit.btn: Editer
+profileShow.title: Mon profil
+profileCreatedAt.profile: Profil créé le
+profileShowEdit.btn: Editer profil
+profileShow.noVideoFound: Aucune vidéo trouvée
+footerLink.home: Acceuil
+footerLink.profile: Mon profil
+footerLink.logout: Déconnexion
+footerLink.login: Connexion
+navLink.logout: Déconnexion
+navLink.register: S'inscrire
+navLink.login: Connexion
+navLink.home: Accueil
+navLink.create: Créer une vidéo
+navLink.profile: Mon profil
+videoForm.title: Titre
+videoForm.linkVideo: Lien Vidéo
+videoForm.description: Description
+videoForm.premium: Video Premium
+userForm.firstname: Prénom
+userForm.lastname: Nom
+Image file: Fichier image
+Delete profile image: Supprimer image de profil
+registerForm.firstname: Prénom
+registerForm.lastname: Nom
+registerForm.email: Email
+registerForm.password: Mot de Passe
+registerForm.agreeTerms: Accepter termes et conditions
+New password: Nouveau mot de passe
+Repeat Password: Répéter le mot de passe
+'Enter your email address, and we will send you a link to reset your password.': 'Veuillez introduire votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.'
+Email: Email

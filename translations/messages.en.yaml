@@ -1,0 +1,73 @@
+vich_uploader.form_label.delete_confirm: 'Delete?'
+vich_uploader.link.download: Download
+profileController.show.mustLogin: 'Log in to access your profile'
+profileController.edit.mustLogin: 'Log in to update your profile'
+'Profile successfuly updated !': 'Profile successfuly updated !'
+registerTemplate.title: 'Sign Up'
+registerTemplate.button: 'Sign Up'
+'Hi! Please confirm your email!': 'Hi! Please confirm your email!'
+'Please confirm your email address by clicking the following link:': 'Please confirm your email address by clicking the following link:'
+'This link will expire in': 'This link will expire in'
+Cheers!: Cheers!
+videoDelete.btn: Delete
+videoEdit.title: Edit
+videoEditBtn.backToList: 'Back To List'
+'video(s) found with the term': 'video(s) found with the term'
+'No videos found': 'No videos found'
+videoIndex.btnCreate: 'Create a video'
+formBtn.save: Save
+videoShowBtn.backToList: 'Back To List'
+videoShow.editBtn: Edit
+videoCreate.title: 'Create a video'
+videoCreateBtn.backToList: 'Back To List'
+resetPasswordRequest.title: 'Reset your password'
+"Enter your email address, and we will send you a\n                        link to reset your password.": "Enter your email address, and we will send you a\n                        link to reset your password."
+resetPasswordRequest.btn: Send
+"If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.\n        This link will expire in": "If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.\n        This link will expire in"
+"If you don't receive an email please check your spam folder or": "If you don't receive an email please check your spam folder or"
+'try again': 'try again'
+resetPassword.title: 'Reset your password'
+resetPassword.button: 'Reset password'
+Hi!: Hi!
+'To reset your password, please visit the following link': 'To reset your password, please visit the following link'
+'You are logged in as': 'You are logged in as'
+Logout: Logout
+'Please sign in': 'Please sign in'
+Password: Password
+'Forgot Password ?': 'Forgot Password ?'
+'Sign in': 'Sign in'
+'Not registered yet ?': 'Not registered yet ?'
+'Create an account': 'Create an account'
+profileEdit.title: 'Edit your profile'
+profileEdit.btn: Edit
+profileShow.title: 'My Profile'
+profileCreatedAt.profile: 'Created At'
+profileShowEdit.btn: Edit
+profileShow.noVideoFound: 'No Video Found'
+footerLink.home: Home
+footerLink.profile: Profile
+footerLink.logout: Logout
+footerLink.login: Login
+navLink.logout: Logout
+navLink.register: 'Sign up'
+navLink.login: Login
+navLink.home: Home
+navLink.create: 'Create a video'
+navLink.profile: 'My Profile'
+videoForm.title: Title
+videoForm.linkVideo: Video Link
+videoForm.description: Description
+videoForm.premium: Premium Video
+userForm.firstname: First name
+userForm.lastname: Last name
+Image file: Image file
+Delete profile image: Delete profile image
+registerForm.firstname: First name
+registerForm.lastname: Last name
+registerForm.email: Email
+registerForm.password: Password
+registerForm.agreeTerms: Accept Terms
+New password: New password
+Repeat Password: Repeat Password
+'Enter your email address, and we will send you a link to reset your password.': Enter your email address, and we will send you a link to reset your password.
+Email: Email

@@ -7,16 +7,19 @@
     </a>
     <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item">
-            <a href={{ path('app_video_index') }} class="nav-link px-2 text-body-secondary">Home</a>
+            <a href={{ path('app_video_index') }} class="nav-link px-2 text-body-secondary">{{'footerLink.home'|trans}}</a>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">My Profile</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Login</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Logout</a>
-        </li>
+        {% if app.user %}
+            <li class="nav-item">
+                <a href={{ path('app_profile') }} class="nav-link px-2 text-body-secondary">{{'footerLink.profile'|trans}}</a>
+            </li>
+            <li class="nav-item">
+                <a href={{ path('app_logout') }} class="nav-link px-2 text-body-secondary">{{'footerLink.logout'|trans}}</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a href={{ path('app_login') }} class="nav-link px-2 text-body-secondary">{{'footerLink.login'|trans}}</a>
+            </li>
+        {% endif %}
     </ul>
 </footer>

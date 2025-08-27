@@ -10,11 +10,11 @@
     <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
 
 
-    <a href="{{ path('app_video_index') }}">back to list</a>
+    <a href="{{ path('app_video_index') }}">{{'videoShowBtn.backToList'|trans}}</a>
 
     {% if app.user and app.user.isVerified %}
         {% if app.user is same as video.user %}
-            <a href="{{ path('app_video_edit', {'id': video.id}) }}">edit</a>
+            <a href="{{ path('app_video_edit', {'id': video.id}) }}">{{'videoShow.editBtn'|trans}}</a>
 
             {{ include('video/_delete_form.html.twig') }}
         {% endif %}

@@ -14,11 +14,18 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title',TextType::class)
-            ->add('videoLink', TextType::class)
-            ->add('description', TextType::class)
+            ->add('title',TextType::class,[
+                'label' => 'videoForm.title',
+            ])
+            ->add('videoLink', TextType::class,[
+                'label' => 'videoForm.linkVideo',
+            ])
+            ->add('description', TextType::class,[
+                'label' => 'videoForm.description',
+            ])
             ->add('premiumVideo', CheckboxType::class,[
                 'required' => false,
+                'label' => 'videoForm.premium',
             ])
         ;
     }

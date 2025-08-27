@@ -8,10 +8,10 @@
     </div>
     <div class="d-flex ms-auto align-items-center">
       {% if app.user %}
-        <a class="nav-link " href={{ path('app_logout') }}>Logout</a>
+        <a class="nav-link " href={{ path('app_logout') }}>{{'navLink.logout'|trans}}</a>
       {% else %}
-        <a class="nav-link {{ app.current_route == 'app_register' ? 'active' : '' }}" href={{ path('app_register') }}>Register</a>
-        <a class="nav-link ms-3 {{ app.current_route == 'app_login' ? 'active' : '' }}" href={{ path('app_login') }}>Login</a>
+        <a class="nav-link {{ app.current_route == 'app_register' ? 'active' : '' }}" href={{ path('app_register') }}>{{'navLink.register'|trans}}</a>
+        <a class="nav-link ms-3 {{ app.current_route == 'app_login' ? 'active' : '' }}" href={{ path('app_login') }}>{{'navLink.login'|trans}}</a>
       {% endif %}
     </div>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -22,29 +22,39 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link {{ app.current_route == 'app_video_index' or app.current_route == 'app_video_show' ? 'active' : '' }}" aria-current="page" href={{ path('app_video_index') }}>Home</a>
+            <a class="nav-link {{ app.current_route == 'app_video_index' or app.current_route == 'app_video_show' ? 'active' : '' }}" aria-current="page" href={{ path('app_video_index') }}>{{'navLink.home'|trans}}</a>
           </li>
           {% if app.user %}
           <li class="nav-item">
-            <a class="nav-link {{ app.current_route == 'app_video_create' ? 'active' : '' }}" href={{ path('app_video_create') }}>Create</a>
+            <a class="nav-link {{ app.current_route == 'app_video_create' ? 'active' : '' }}" href={{ path('app_video_create') }}>{{'navLink.create'|trans}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ app.current_route == 'app_profile' ? 'active' : '' }}" href={{ path('app_profile') }}>My Profile</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <a class="nav-link {{ app.current_route == 'app_profile' ? 'active' : '' }}" href={{ path('app_profile') }}>{{'navLink.profile'|trans}}</a>
           </li>
           {% endif %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {% if app.request.locale == 'en' %}
+                <span class="flag">🇬🇧</span> English
+              {% else %}
+                <span class="flag">🇫🇷</span> Français
+              {% endif %}
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'),
+                  app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}">
+                  <span class="flag">🇬🇧</span> English
+                </a>
+                </li>
+              <li>
+                <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'),
+                  app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}">
+                  <span class="flag">🇫🇷</span> Français
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>

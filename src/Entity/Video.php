@@ -21,7 +21,8 @@ class Video
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
     #[Assert\Length(
-        min: 3
+        min: 3,
+        max: 50
     )]
     #[InappropriateWords()]
     private ?string $title = null;

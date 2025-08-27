@@ -9,7 +9,7 @@
                 form: form
             } only %}
             {% if searchData.q %}
-                <p class="d-flex justify-content-center">{{ videosTotal }} video(s) found with the term {{ searchData.q }}</p>
+                <p class="d-flex justify-content-center">{{ videosTotal }} {{' video(s) found with the term'|trans}} {{ searchData.q }}</p>
             {% endif %}
         {% endif %}
         <br>
@@ -35,7 +35,7 @@
                     </div>
                 {% endif %}
             {% else %}
-                <p> No videos found</p>
+                <p> {{'No videos found'|trans}}</p>
             {% endfor %}
         </div>
         <br>
@@ -43,5 +43,5 @@
             {{ knp_pagination_render(videos) }}
         </div>
     </div>
-    <a href={{ path('app_video_create') }}>Create new</a>
+    <a href={{ path('app_video_create') }}>{{'videoIndex.btnCreate'|trans}}</a>
 {% endblock %}
