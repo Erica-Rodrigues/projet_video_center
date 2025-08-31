@@ -14,12 +14,13 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
-    <body>
+    <body style="display: flex; flex-direction: column; min-height: 100vh;">
         {{include('/layouts/partials/_nav.html.twig')}}
-        <div class="container my-4" style="padding-top: 5rem">
+        <div class="container my-4" style="flex: 1 0 auto; padding-top: 5rem;">
             {{include('layouts/partials/_flash.html.twig')}}
             {% block body %}{% endblock %}
         </div>
+        {{include('/layouts/partials/_footer.html.twig')}}
     </body>
-    {{include('/layouts/partials/_footer.html.twig')}}
+
 </html>
