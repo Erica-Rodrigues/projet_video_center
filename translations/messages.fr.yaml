@@ -41,7 +41,7 @@ Password: Mot de passe
 profileEdit.title: Editer Profil
 profileEdit.btn: Editer
 profileShow.title: Mon profil
-profileCreatedAt.profile: Profil créé le
+profileCreatedAt.profile: Profil créé
 profileShowEdit.btn: Editer profil
 profileShow.noVideoFound: Aucune vidéo trouvée
 footerLink.home: Acceuil
@@ -72,3 +72,4 @@ Repeat Password: Répéter le mot de passe
 "Enter your email address, and we will send you a link to reset your password.": "Veuillez introduire votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe."
 Email: Email
 Search a video...: rechercher une video...
+videos: vidéos

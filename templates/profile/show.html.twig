@@ -3,22 +3,29 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-6 mx-auto text-center">
-            <h1>{{'profileShow.title'|trans}}</h1>
+    <div class="row align-items-center">
+        <div class="col-auto ps-5">
             <img style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover;" src={{vich_uploader_asset(app.user, 'imageFile')}}>
-            <br>
-            <p>{{ app.user.email }}</p>
-            <h2>{{ app.user.firstname ~" "~ app.user.lastname}}</h2>
-            <p>{{'profileCreatedAt.profile' |trans}} {{ app.user.createdAt|date("d-m-Y") }}</p>
+        </div>
+        <div class="col ps-5">
+            <div class="d-flex align-items-center gap-3">
+                <h1>{{ app.user.firstname ~" "~ app.user.lastname}}</h1>
+                {% if app.user.isVerified %}
+                    <i class="fa-solid fa-circle-check"></i>
+                {% endif %}
+            </div>
+            <p> 
+                <span class="fw-bold">{{ app.user.email }}</span>
+                <span style="color: rgb(108,117,125); display: inline-block; margin-left: 6px">~{{ videosTotal }} {{'videos' |trans}}</span>
+            </p>
+            <p style="font-size: 15px">{{'profileCreatedAt.profile' |trans}} {{ app.user.createdAt|ago }}</p>
             <br>
             <p>
                 <a class="btn btn-primary btn-sm" href={{ path('app_profile_edit')}}>{{'profileShowEdit.btn'|trans}}</a>
             </p>
-        
         </div>
-    
     </div>
+    <hr class="my-5">
     <div class="row justify-content-center gap-3">
         {% for video in videos %}
             <div class="card" style="width: 350px; padding: 15px 15px 0px 15px; box-sizing: border-box;">

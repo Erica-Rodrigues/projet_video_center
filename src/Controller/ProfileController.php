@@ -22,8 +22,10 @@ final class ProfileController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         $videos = $videoRepository->findBy(['user' => $this->getUser()]);
+        $videosTotal = sizeof($videos);
         return $this->render('profile/show.html.twig',[
-            'videos' => $videos
+            'videos' => $videos,
+            'videosTotal' => $videosTotal
         ]);
     }
 
