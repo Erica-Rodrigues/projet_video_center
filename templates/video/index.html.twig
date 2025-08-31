@@ -13,7 +13,7 @@
             {% endif %}
         {% endif %}
         <br>
-        <div class="row">
+        <div class="row justify-content-center gap-3">
             {% for video in videos %}
                 <div class="card" style="width: 350px;">
                     <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
@@ -31,5 +31,5 @@
             {{ knp_pagination_render(videos) }}
         </div>
     </div>
-    <a href={{ path('app_video_create') }}>{{'videoIndex.btnCreate'|trans}}</a>
+    {# <a href={{ path('app_video_create') }}>{{'videoIndex.btnCreate'|trans}}</a> #}
 {% endblock %}

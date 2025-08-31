@@ -53,7 +53,7 @@ final class VideoController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $searchData->page = $request->query->getInt('page', 1);
             $videos = $videoRepository->findBySearch($searchData);
-            $videosTotal = sizeof($videos);
+            $videosTotal = $videos->getTotalItemCount();
 
             return $this->render('video/index.html.twig', [
                 'form' => $form->createView(),

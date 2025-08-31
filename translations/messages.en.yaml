@@ -12,7 +12,7 @@ Cheers!: Cheers!
 videoDelete.btn: Delete
 videoEdit.title: Edit
 videoEditBtn.backToList: 'Back To List'
-'video(s) found with the term': 'video(s) found with the term'
+' video(s) found with the term': 'video(s) found with the term'
 'No videos found': 'No videos found'
 videoIndex.btnCreate: 'Create a video'
 formBtn.save: Save
@@ -69,5 +69,6 @@ registerForm.password: Password
 registerForm.agreeTerms: Accept Terms
 New password: New password
 Repeat Password: Repeat Password
-'Enter your email address, and we will send you a link to reset your password.': Enter your email address, and we will send you a link to reset your password.
+"Enter your email address, and we will send you a link to reset your password.": "Enter your email address, and we will send you a link to reset your password."
 Email: Email
+Search a video...: Search a video...

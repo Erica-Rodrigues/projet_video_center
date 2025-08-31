@@ -12,7 +12,7 @@ Cheers!: Bien à vous !
 videoDelete.btn: Supprimer vidéo
 videoEdit.title: Editer vidéo
 videoEditBtn.backToList: Retour à la liste
-'video(s) found with the term': 'vidéo(s) trouvée(s) avec le terme'
+' video(s) found with the term': 'vidéo(s) trouvée(s) avec le terme'
 'No videos found': 'Aucune vidéo trouvée'
 videoIndex.btnCreate: Créer une vidéo
 formBtn.save: Enregister
@@ -69,5 +69,6 @@ registerForm.password: Mot de Passe
 registerForm.agreeTerms: Accepter termes et conditions
 New password: Nouveau mot de passe
 Repeat Password: Répéter le mot de passe
-'Enter your email address, and we will send you a link to reset your password.': 'Veuillez introduire votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.'
+"Enter your email address, and we will send you a link to reset your password.": "Veuillez introduire votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe."
 Email: Email
+Search a video...: rechercher une video...
