@@ -3,11 +3,13 @@
 {% block title %}Edit Video{% endblock %}
 
 {% block body %}
-    <h1>{{'videoEdit.title'|trans}}</h1>
+    <div class = "row justify-content-center">
+        <div class="col-md-6 rounded p-5" style="background-color: rgb(222,226,230)">
+            <h1>{{'videoEdit.title'|trans}}</h1>
 
-    {{ include('video/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ include('video/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
 
-    <a href="{{ path('app_video_index') }}">{{'videoEditBtn.backToList'|trans}}</a>
 
-    {{ include('video/_delete_form.html.twig') }}
 {% endblock %}

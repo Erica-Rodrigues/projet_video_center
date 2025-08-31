@@ -3,12 +3,10 @@
 {% block title %}New Video{% endblock %}
 
 {% block body %}
-    <div class = "row">
-        <div class= "col-md-6 mx-auto mt-5">
+    <div class = "row justify-content-center">
+        <div class="col-md-6 rounded p-5" style="background-color: rgb(222,226,230)">
             <h1 align="center">{{'videoCreate.title'|trans}}</h1>          
             {{ include('video/_form.html.twig') }}
-
-            <a href="{{ path('app_video_index') }}">{{'videoCreateBtn.backToList'|trans}}</a>
         </div>
     </div>
 {% endblock %}

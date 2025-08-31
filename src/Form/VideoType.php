@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +21,7 @@ class VideoType extends AbstractType
             ->add('videoLink', TextType::class,[
                 'label' => 'videoForm.linkVideo',
             ])
-            ->add('description', TextType::class,[
+            ->add('description', TextareaType::class,[
                 'label' => 'videoForm.description',
             ])
             ->add('premiumVideo', CheckboxType::class,[

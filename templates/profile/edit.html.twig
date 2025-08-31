@@ -3,17 +3,15 @@
 {% block title 'Profile'%}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-6 mx-auto text-center">
-            <h1 class="text-center my-5">{{ 'profileEdit.title' |trans}}</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6 rounded p-5" style="background-color: rgb(222,226,230)">
+            <h1 >{{ 'profileEdit.title' |trans}}</h1>
             {{ form_start(userForm) }}
             {{ form_row(userForm.firstname) }}
             {{ form_row(userForm.lastname) }}
             {{ form_row(userForm.imageFile)}}
             <br>
-            <p>
-                <button type="submit" class="btn btn-primary">{{ 'profileEdit.btn' |trans}}</button>
-            </p>
+            <button type="submit" class="btn btn-primary">{{ 'profileEdit.btn' |trans}}</button>
             {{ form_end(userForm)}}
         </div>
     </div>
