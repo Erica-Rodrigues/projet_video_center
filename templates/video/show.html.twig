@@ -3,20 +3,35 @@
 {% block title %}{{ video.id ~" "~video.title }}{% endblock %}
 
 {% block body %}
-    <h1>{{ video.title }}</h1>
-    <iframe width="640" height="480" src={{ video.videoLink }}></iframe>
-    <p>{{ video.description }}</p>
-    <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
-    <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+    <div class=" d-flex flex-column align-items-center">
+        <div>
+            <iframe width="640" height="480" src={{ video.videoLink }}></iframe>
+            <h1>{{ video.title }}</h1>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px 0px 15px">
+                <img style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" src={{vich_uploader_asset(video.user, 'imageFile')}}>
+                <div class="d-flex align-items-center gap-2">
+                    <p style="margin: 0; "> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+                    {% if app.user.isVerified %}
+                        <i class="fa-solid fa-circle-check fa-xs"></i>
+                    {% endif %}
+                </div>
+            </div>
+            <div style="background-color: rgb(173,181,189); border-radius: 10px; padding: 10px 15px; margin-top: 15px">
+                <p style="font-weight: bold; font-size: 15px; margin-bottom: 4px">{{ video.createdAt ? video.createdAt|date('Y-m-d') : '' }}</p>
+                <p>{{ video.description }}</p>
+            </div>
 
+            <div class="d-flex justify-content-center gap-3 py-4">
+                <a class="btn" style="background-color: rgb(233,236,239);" href="{{ path('app_video_index') }}">{{'videoShowBtn.backToList'|trans}}</a>
 
-    <a href="{{ path('app_video_index') }}">{{'videoShowBtn.backToList'|trans}}</a>
+                {% if app.user and app.user.isVerified %}
+                    {% if app.user is same as video.user %}
+                        <a class="btn btn-primary"  href="{{ path('app_video_edit', {'id': video.id}) }}">{{'videoShow.editBtn'|trans}}</a>
 
-    {% if app.user and app.user.isVerified %}
-        {% if app.user is same as video.user %}
-            <a href="{{ path('app_video_edit', {'id': video.id}) }}">{{'videoShow.editBtn'|trans}}</a>
-
-            {{ include('video/_delete_form.html.twig') }}
-        {% endif %}
-    {% endif %}
+                        {{ include('video/_delete_form.html.twig') }}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
