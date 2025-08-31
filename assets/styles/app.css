@@ -20,3 +20,33 @@ body {
 .alert-info {
     background-color: blue;
 }
+
+.card{
+    position: relative;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card > .premium__badge:last-child{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 8px;
+}
+
+.premium__badge p {
+    margin: 0;
+    line-height: 1;
+    font-size: 10px;
+}
+
+.premium__badge i {
+    color: yellow;
+}

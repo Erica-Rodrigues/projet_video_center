@@ -15,12 +15,23 @@
         <br>
         <div class="row justify-content-center gap-3">
             {% for video in videos %}
-                <div class="card" style="width: 350px;">
-                    <iframe width="300" height="200" src={{ video.videoLink }}></iframe>
-                    <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
-                    <p>{{ video.description |u.truncate(25, '...',true) }}</p>
-                    <p>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</p>
-                    <p> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+                <div class="card" style="width: 350px; padding: 15px 15px 0px 15px; box-sizing: border-box;">
+                    <iframe height="200" style="width: 100%" src={{ video.videoLink }}></iframe>
+                    <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 10px;">
+                        <img style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" src={{vich_uploader_asset(video.user, 'imageFile')}}>
+                        <div>
+                            <h2><a href={{ path('app_video_show', {id : video.id}) }}>{{ video.title |u.truncate(20,'...',true) }}</a></h2>
+                            <p style="margin-bottom: 4px;">{{ video.description |u.truncate(25, '...',true) }}</p>
+                            <p style="margin-bottom: 0px; font-Size: 15px; color: rgb(108,117,125);"> {{ video.user.firstname }} {{ video.user.lastname }}</p>
+                            <p style="font-Size: 15px; color: rgb(108,117,125);">{{ video.createdAt ? video.createdAt |ago : '' }}</p>
+                        </div>
+                    </div>
+                    {% if video.premiumVideo %}
+                        <div class="premium__badge">
+                            <i class="fa-solid fa-star"></i>
+                            <p>PRE</p>
+                        </div>
+                    {% endif %}
                 </div>
             {% else %}
                 <p> {{'No videos found'|trans}}</p>
