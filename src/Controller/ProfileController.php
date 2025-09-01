@@ -42,7 +42,6 @@ final class ProfileController extends AbstractController
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $user->setUpdatedAt(new DateTimeImmutable());
             $em->flush();
             $this->addFlash('success', $translator->trans('Profile successfuly updated !'));
             return $this->redirectToRoute('app_profile');

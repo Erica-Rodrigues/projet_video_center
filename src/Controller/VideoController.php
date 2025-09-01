@@ -91,9 +91,7 @@ final class VideoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $video->setUser($this->getUser())
-                  ->setCreatedAt(new DateTimeImmutable())
-                  ->setUpdatedAt(new DateTimeImmutable());
+            $video->setUser($this->getUser());
             $entityManager->persist($video);
             $entityManager->flush();
 
@@ -152,7 +150,6 @@ final class VideoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $video->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
             return $this->redirectToRoute('app_video_index', [], Response::HTTP_SEE_OTHER);
